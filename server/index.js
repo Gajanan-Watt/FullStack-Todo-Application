@@ -1,6 +1,7 @@
 const bodyParser = require("body-parser");
 const express = require('express');
 const cors = require('cors');
+const { ObjectId } = require('mongodb');
 
 require("./config/db");
 const Todo = require("./model/todos.model");
@@ -37,18 +38,14 @@ app.post("/todos", async (req, res) => {
     } else res.send("No more todos");
 })
 
-app.delete("/todos/:id", async(req, res) => {
 
-    await Todo.findByIdAndDelete({id}, function(err, resp) {
-        if(err){
-            console.log(err);
-        } else {
-            console.log(resp);
-        }
-    })
-    await Todo.findById
-    res.send("Deleted Successfully");
-})
+app.delete("/todos/:item", async (req, res) => {
+    await Todo.deleteOne({ item: req.params.item });
+  
+    res.send("deleted successfully");
+  });
+  
+
 
 
 const url = 'https://andruxnet-random-famous-quotes.p.rapidapi.com/?cat=famous&count=10';
