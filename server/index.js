@@ -38,7 +38,8 @@ app.post("/todos", async (req, res) => {
 })
 
 app.delete("/todos/:id", async(req, res) => {
-    await Todo.deleteOne({ id: req.params.id});
+    await Todo.deleteOne({id});
+    await Todo.findById
     res.send("Deleted Successfully");
 })
 
