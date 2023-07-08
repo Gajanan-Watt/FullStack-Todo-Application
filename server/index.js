@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(cors({
     // origin: "",
-    origin: "http://localhost:5173",
+    origin: "https://full-stack-todo-application-delta.vercel.app",
     methods: "GET, POST, DELETE",
     allowedHeaders: "Content-Type, Authorization"
 }));
